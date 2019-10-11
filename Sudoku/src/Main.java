@@ -5,21 +5,23 @@ public class Main {
     }
 
     public static void main(String[] var0) {
+        Sudoku sudoku = new Sudoku();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Sudoku");
+        sudoku.printBoard();
         while(true) {
-            Sudoku var1 = new Sudoku();
-            Scanner var2 = new Scanner(System.in);
             System.out.println("Enter x: ");
-            int var3 = var2.nextInt();
+            int x = scanner.nextInt();
             System.out.println("Enter y: ");
-            int var4 = var2.nextInt();
+            int y = scanner.nextInt();
             System.out.println("Enter value: ");
-            int var5 = var2.nextInt();
-            boolean var6 = var1.makeMove(var3, var4, var5);
-            if (!var6) {
+            int value = scanner.nextInt();
+            boolean successfulMove = sudoku.makeMove(x, y, value);
+            if (!successfulMove) {
                 System.out.println("Invalid move");
             } else {
-                var1.printBoard();
-                if (var1.isEnd()) {
+                sudoku.printBoard();
+                if (sudoku.isEnd()) {
                     System.out.println("Win");
                     return;
                 }

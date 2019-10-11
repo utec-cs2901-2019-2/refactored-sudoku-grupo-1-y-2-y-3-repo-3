@@ -12,7 +12,7 @@ public class Sudoku{
         {
             for (int j = 0; j < 9; j++)
             {
-                board[i][j] = new Cell();
+                board[i][j] = new Cell(true);
             }
         }
     }
@@ -32,6 +32,7 @@ public class Sudoku{
                 }
             }
         }
+        System.out.print("\n");
     }
 
     private void generateBoard(){
@@ -113,8 +114,7 @@ public class Sudoku{
         return (checkRow(num, i, j) && checkCol(num, i, j) && checkQuad(num, i, j));
     }
 
-    void removeDigits(){
-
+    void removeDigits() {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 board[i][j] = new Cell(false);
@@ -129,7 +129,6 @@ public class Sudoku{
             board[y][x] = new Cell(true);
             board[y][x].val = 0;
         }
-
     }
 
     int randomGenerator(int num) {
@@ -172,7 +171,10 @@ public class Sudoku{
 
     public boolean makeMove(int number, int row, int col)
     {
-        if (this.checkRow(number, row, col) && this.checkCol(number, row, col) && this.checkQuad(number, row, col)) {
+        final boolean rowIsCorrect = this.checkRow(number, row, col);
+        final boolean colIsCorrect = this.checkCol(number, row, col);
+        final boolean quadIsCorrect = this.checkQuad(number, row, col);
+        if (rowIsCorrect && colIsCorrect && quadIsCorrect) {
             if (this.board[row][col].mutable == true)
             {
                 this.board[row][col].val = number;
