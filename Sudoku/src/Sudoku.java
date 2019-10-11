@@ -1,8 +1,21 @@
+import java.util.HashSet;
+import java.util.Set;
 
 public class Sudoku{
 
     int[][] solved_board = new int[9][9];
     Cell[][] board = new Cell[9][9];
+
+    public Sudoku()
+    {
+        for (int i = 0; i < 9; i++)
+        {
+            for (int j = 0; j < 9; j++)
+            {
+                board[i][j] = new Cell();
+            }
+        }
+    }
 
     public void printBoard() {
         for (int i = 0; i < 9; i++) {

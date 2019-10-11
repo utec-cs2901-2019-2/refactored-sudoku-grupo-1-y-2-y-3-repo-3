@@ -4,7 +4,7 @@ public class Main {
     public Main() {
     }
 
-    public static void Main(String[] var0) {
+    public static void main(String[] var0) {
         while(true) {
             Sudoku var1 = new Sudoku();
             Scanner var2 = new Scanner(System.in);
