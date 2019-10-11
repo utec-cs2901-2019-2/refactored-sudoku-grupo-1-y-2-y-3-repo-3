@@ -16,7 +16,8 @@ public class Main {
             int y = scanner.nextInt();
             System.out.println("Enter value: ");
             int value = scanner.nextInt();
-            boolean successfulMove = sudoku.makeMove(x, y, value);
+
+            final boolean successfulMove = sudoku.makeMove(x, y, value);
             if (!successfulMove) {
                 System.out.println("Invalid move");
             } else {
