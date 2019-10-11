@@ -1,9 +1,7 @@
 public class Cell {
-    public int val;
-    public final boolean mutable;
+    public int value = 0;
+    public final boolean mutable = true;
 
-    public Cell(boolean var1) {
-        this.mutable = var1;
-        this.val = 0;
+    public Cell() {
     }
 }

@@ -12,7 +12,7 @@ public class Sudoku{
         {
             for (int j = 0; j < 9; j++)
             {
-                board[i][j] = new Cell(true);
+                board[i][j] = new Cell();
             }
         }
     }
@@ -26,9 +26,9 @@ public class Sudoku{
                 if (j % 3 == 0)
                     System.out.print(" ");
                 if(!this.board[i][j].mutable){
-                    System.out.print("\u001B[31m" + this.board[i][j].val + "\u001B[0m" + " ");
+                    System.out.print("\u001B[31m" + this.board[i][j].value + "\u001B[0m" + " ");
                 } else {
-                    System.out.print(this.board[i][j].val + " ");
+                    System.out.print(this.board[i][j].value + " ");
                 }
             }
         }
@@ -118,7 +118,7 @@ public class Sudoku{
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 board[i][j] = new Cell(false);
-                board[i][j].val = solved_board[i][j];
+                board[i][j].value = solved_board[i][j];
             }
         }
 
@@ -127,7 +127,7 @@ public class Sudoku{
             int y = randomGenerator(9);
 
             board[y][x] = new Cell(true);
-            board[y][x].val = 0;
+            board[y][x].value = 0;
         }
     }
 
@@ -139,7 +139,7 @@ public class Sudoku{
     {
         int r = row - 1;
         for (int c = 0; c < 9; ++c){
-            if (this.board[r][c].val == number)
+            if (this.board[r][c].value == number)
                 return false;
         }
         return true;
@@ -149,7 +149,7 @@ public class Sudoku{
     {
         int c = col - 1;
         for (int r = 0; r < 9; ++r) {
-            if (this.board[r][c].val == number)
+            if (this.board[r][c].value == number)
                 return false;
         }
         return true;
@@ -162,7 +162,7 @@ public class Sudoku{
 
         for (int r = rs; r < rs + 3; ++r) {
             for (int c = cs; c < cs + 3; ++cs) {
-                if (this.board[r][c].val == number)
+                if (this.board[r][c].value == number)
                     return false;
             }
         }
@@ -177,7 +177,7 @@ public class Sudoku{
         if (rowIsCorrect && colIsCorrect && quadIsCorrect) {
             if (this.board[row][col].mutable == true)
             {
-                this.board[row][col].val = number;
+                this.board[row][col].value = number;
             }
         }
         return false;
@@ -186,7 +186,7 @@ public class Sudoku{
     public boolean isEnd() {
         for (int col = 0; col < 9; ++col) {
             for (int row = 0; row < 9; ++row) {
-                if (board[col][row].val == 0) {
+                if (board[col][row].value == 0) {
                     return false;
                 }
             }
