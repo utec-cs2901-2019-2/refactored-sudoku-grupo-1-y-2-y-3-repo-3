@@ -174,11 +174,10 @@ public class Sudoku{
         final boolean rowIsCorrect = this.checkRow(number, row, col);
         final boolean colIsCorrect = this.checkCol(number, row, col);
         final boolean quadIsCorrect = this.checkQuad(number, row, col);
-        if (rowIsCorrect && colIsCorrect && quadIsCorrect) {
-            if (this.board[row][col].mutable == true)
-            {
-                this.board[row][col].val = number;
-            }
+        final boolean positionIsMutable = (this.board[row][col].mutable == true);
+        if (rowIsCorrect && colIsCorrect && quadIsCorrect && positionIsMutable) {
+            this.board[row][col].val = number;
+            return true;
         }
         return false;
     }
